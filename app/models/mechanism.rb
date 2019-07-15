@@ -1,0 +1,2 @@
+class Mechanism < ApplicationRecord
+end
