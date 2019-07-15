@@ -3,6 +3,12 @@ class User < ApplicationRecord
   belongs_to :group
   has_many :games
   has_many :events, through: :group
+
+  validates :name, :email, :password, presence: true
+  validates :name, length: { minimum: 2 }
+  validates :name, format: { without: /[0-9]/, message: "does not allow numbers" }
+  validates :email, uniqueness: true
+  validates :password, length: { in: 6..20 }
   
 
 
