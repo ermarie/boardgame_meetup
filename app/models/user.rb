@@ -1,6 +1,9 @@
 class User < ApplicationRecord
+  has_secure_password
   belongs_to :group
   has_many :games
+  has_many :events, through: :group
+  
 
 
   devise :database_authenticatable, :registerable,
