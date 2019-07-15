@@ -1,6 +1,8 @@
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  belongs_to :group
+  has_many :games
+
+
   devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
@@ -13,5 +15,5 @@ class User < ApplicationRecord
         user.password = Devise.friendly_token[0,20]
       end
     end
-    
+
 end
