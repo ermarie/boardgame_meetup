@@ -263,7 +263,7 @@ Devise.setup do |config|
   
   
   
-  config.omniauth :github, "ENV[GITHUB_KEY]", "ENV[GITHUB_SECRET]", scope: 'user:email'
+  config.omniauth :github, ENV['GITHUB_KEY'], ENV['GITHUB_SECRET'], scope: 'user:email'
   
   
   

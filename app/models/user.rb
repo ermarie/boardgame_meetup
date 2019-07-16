@@ -16,6 +16,7 @@ class User < ApplicationRecord
     :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
     def self.from_omniauth(auth)
+      binding.pry
       where(provider: auth.provider, uid:auth.id).first_or_create do |user|
         user.provider = auth.provider
         user.name = auth.info.name

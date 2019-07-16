@@ -1,0 +1,7 @@
+<h1><%= @group.name %></h1>
+
+<%= @group.events.each do |event| %>
+    <%= event.name %>
+    <%= event.date_time %>
+    <%= event.location %>
+<% end %>
