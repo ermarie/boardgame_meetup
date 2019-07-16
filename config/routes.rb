@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  get 'games/new'
+  get 'games/create'
+  get 'games/index'
+  get 'games/show'
+  get 'games/edit'
+  get 'games/update'
+  get 'games/destroy'
   get 'users/show'
   get 'events/new'
   get 'events/create'
