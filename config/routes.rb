@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'groups/new'
+  get 'groups/create'
+  get 'groups/view'
   get 'sessions/new'
   get 'sessions/create'
   get 'sessions/destroy'
@@ -17,7 +20,7 @@ Rails.application.routes.draw do
   end
     
     
-  resource :games, :categories, :mechanisms
+  resource :events, :games, :categories, :mechanisms
 
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
