@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'users/show'
   get 'events/new'
   get 'events/create'
   get 'events/index'
@@ -16,7 +17,7 @@ Rails.application.routes.draw do
   devise_scope :user do
     get 'login', to: 'devise/sessions#new'
     get 'signup', to: 'devise/registrations#new'
-    #get 'logout', to: 'devise/sessions#destroy'
+    get 'logout', to: 'sessions#destroy'
   end
 
   resource :groups do 
