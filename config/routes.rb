@@ -11,14 +11,12 @@ Rails.application.routes.draw do
   get 'sessions/new'
   get 'sessions/create'
   get 'sessions/destroy'
-  devise_for :users, :controllers => {registrations: "registrations" }
+  devise_for :users, :controllers => { :registrations => "registrations", :omniauth_callbacks => "callbacks" }
   
   devise_scope :user do
     get 'login', to: 'devise/sessions#new'
-  end
-
-  devise_scope :user do
     get 'signup', to: 'devise/registrations#new'
+    #get 'logout', to: 'devise/sessions#destroy'
   end
 
   resource :groups do 

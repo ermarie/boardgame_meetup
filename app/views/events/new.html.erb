@@ -3,5 +3,13 @@
 <%= form_for @event do |f| %>
     <%= f.label :name %>
     <%= f.text_field :name %>
+    <%= f.label :month %>
+    <%= select_month(Date.today) %>
+    <%= f.label :day %>
+    <%= select_day(Date.today) %>
+    <%= f.label :month %>
+    <%= select_year(Date.today) %>
+    <%= f.date_field %>
+
     <%= f.submit "Create Event" %>
 <% end %>

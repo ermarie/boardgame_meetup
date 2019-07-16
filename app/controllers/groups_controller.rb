@@ -4,7 +4,7 @@ class GroupsController < ApplicationController
   end
 
   def create
-    group = Group.create(name: params["name"])
+    group = Group.create(group_params)
     redirect_to group_path(group)
   end
 
@@ -15,4 +15,11 @@ class GroupsController < ApplicationController
   def show
     @group = Group.find_by(id: params[:id])
   end
+
+  
+  private
+
+    def group_params
+      params.require(:group).permit(:name)
+    end
 end
