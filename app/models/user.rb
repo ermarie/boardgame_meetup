@@ -4,7 +4,7 @@ class User < ApplicationRecord
   #has_many :events, through: :group
 
   devise :database_authenticatable, :registerable,
-    :recoverable, :rememberable, :trackable, :validatable, :omniauthable
+    :recoverable, :rememberable, :validatable, :omniauthable
 
     def self.from_omniauth(auth)
       where(provider: auth.provider, uid:auth.id).first_or_create do |user|
