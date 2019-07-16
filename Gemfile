@@ -65,3 +65,4 @@ gem 'pry'
 gem 'devise'
 gem 'omniauth-github'
 gem "omniauth-rails_csrf_protection"
+gem 'bootstrap-sass', '3.3.7'

@@ -22,6 +22,7 @@ Rails.application.routes.draw do
     
   resource :events, :games, :categories, :mechanisms
 
-
+  root to: "sessions#new"
+  root to: "appliation#home"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
