@@ -1,15 +1,21 @@
 <h1>User Show Page</h1>
 
 <h1>Welcome <%= @user.name %></h1>
-
-<h3>Your Groups are:</h3>
-<% @user.groups.each do |g| %>
-    <%= link_to g.name, group_path(g) %>
+<%binding.pry%>
+<% if !@user.groups.empty? %>
+    <h3>Your Groups are:</h3>
+    <% @user.groups.each do |g| %>
+        <%= link_to g.name, group_path(g) %>
+    <% end %>
 <% end %>
-<%= link_to "See All Groups", groups_path %>
+    <%= link_to "Create a New Group", new_group_path %>
+    <%= link_to "Join a New Group", groups_path %>
 
-<h4>Your Events are:</h4>
-<% @user.groups.each do |g| %>
-    <%= g.events.each do |e| %>
-    <%= link_to e.name, group_path(g) %>
+<% if @user.events != nil %>
+    <h4>Your Events are:</h4>
+    <% @user.groups.each do |g| %>
+        <%= g.events.each do |e| %>
+            <%= link_to e.name, group_path(g) %>
+        <% end %>
+    <% end %>
 <% end %>
