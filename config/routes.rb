@@ -10,8 +10,8 @@ Rails.application.routes.draw do
   resources :users, only: [:show]
   #resources :groups, only: [:show]
 
-  resources :groups, only: [:show] do 
-    resources :events, only: [:show]
+  resources :groups do 
+    resources :events, only: [:new, :create]
   end
     
     

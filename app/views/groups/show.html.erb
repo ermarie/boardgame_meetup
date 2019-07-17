@@ -5,3 +5,16 @@
     <%= event.date_time %>
     <%= event.location %>
 <% end %>
+
+<% if !current_user.groups.include?(@group) %>
+<div>
+    <%= link_to "Join Group", group_path(@group) %>
+</div>
+<% else %>
+<div>
+    <%= link_to "Edit Group", edit_group_path(@group) %>
+</div>
+<div>
+    <%= link_to "Delete Group", group_path(@group), method: delete %>
+</div>
+<% end %>
