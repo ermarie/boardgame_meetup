@@ -1,20 +1,21 @@
 <h1><%= @group.name %></h1>
 
-<%= @group.events.each do |event| %>
-    <%= event.name %>
-    <%= event.date_time %>
-    <%= event.location %>
-<% end %>
-
 <% if !current_user.groups.include?(@group) %>
-<div>
-    <%= link_to "Join Group", group_path(@group) %>
-</div>
+    <h2>Events:</h2>
+    <%= @group.events.each do |event| %>
+        <%= event.name %></ br>
+        <%= event.date_time %></ br>
+        <%= event.location %></ br>
+        </ br>
+    <% end %>
+    <div>
+        <%= link_to "Edit Group", edit_group_path(@group) %>
+    </div>
+    <div>
+        <%= link_to "Delete Group", group_path(@group), method: "delete" %>
+    </div>
 <% else %>
-<div>
-    <%= link_to "Edit Group", edit_group_path(@group) %>
-</div>
-<div>
-    <%= link_to "Delete Group", group_path(@group), method: delete %>
-</div>
+    <div>
+        <%= link_to "Join Group", group_path(@group) %>
+    </div>
 <% end %>

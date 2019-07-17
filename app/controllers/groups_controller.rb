@@ -5,12 +5,13 @@ class GroupsController < ApplicationController
 
   def create
     group = Group.create(group_params)
+    current_user.groups << group
     redirect_to group_path(group)
   end
 
   def index
     @groups = Group.all
-    @user = User.find_by_id(params[:id])
+    @user = current_user
   end
 
   def show

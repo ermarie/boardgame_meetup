@@ -24,4 +24,10 @@ class GamesController < ApplicationController
 
   def destroy
   end
+
+  private
+
+  def event_params
+    params.permit(:event).
+  end
 end

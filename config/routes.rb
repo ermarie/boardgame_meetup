@@ -11,9 +11,8 @@ Rails.application.routes.draw do
   #resources :groups, only: [:show]
 
   resources :groups do 
-    resources :events, only: [:new, :create]
+    resources :events, only: [:new, :create, :show, :edit, :update, :delete]
   end
-    
     
   #resources :events, :games, :categories, :mechanisms
 
