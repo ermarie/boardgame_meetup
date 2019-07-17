@@ -1,6 +1,6 @@
 <h1><%= @group.name %></h1>
 
-<% if !current_user.groups.include?(@group) %>
+<% if current_user.groups.include?(@group) %>
     <h2>Events:</h2>
     <%= @group.events.each do |event| %>
         <%= event.name %></ br>
@@ -8,14 +8,15 @@
         <%= event.location %></ br>
         </ br>
     <% end %>
+    <%= link_to "Add Event", new_group_event_path(@group) %>
     <div>
-        <%= link_to "Edit Group", edit_group_path(@group) %>
+        <%= button_to "Edit Group", edit_group_path(@group) %>
     </div>
     <div>
-        <%= link_to "Delete Group", group_path(@group), method: "delete" %>
+        <%= button_to "Delete Group", group_path(@group), method: "delete" %>
     </div>
 <% else %>
     <div>
-        <%= link_to "Join Group", group_path(@group) %>
+        <%= button_to "Join Group", group_path(@group) %>
     </div>
 <% end %>

@@ -1,7 +1,7 @@
 <h1>User Show Page</h1>
 
 <h1>Welcome <%= @user.name %></h1>
-<%binding.pry%>
+
 <% if !@user.groups.empty? %>
     <h3>Your Groups are:</h3>
     <% @user.groups.each do |g| %>
@@ -9,10 +9,10 @@
     <% end %>
 <% end %>
 <div>
-    <%= link_to "Create a New Group", new_group_path %>
+    <%= button_to "Create a New Group", new_group_path %>
 </div>
 <div>
-    <%= link_to "Join a New Group", groups_path %>
+    <%= button_to "Join a New Group", groups_path %>
 </div>
 
 <% if !@user.events.empty? %>
