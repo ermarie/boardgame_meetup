@@ -7,9 +7,12 @@ Rails.application.routes.draw do
     get 'signup', to: 'devise/registrations#new'
   end
 
-  # resources :groups do 
-  #   resources :events
-  # end
+  resources :users, only: [:show]
+  #resources :groups, only: [:show]
+
+  resources :groups, only: [:show] do 
+    resources :events, only: [:show]
+  end
     
     
   #resources :events, :games, :categories, :mechanisms
