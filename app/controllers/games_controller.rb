@@ -14,7 +14,7 @@ class GamesController < ApplicationController
   def index
     @user = current_user
     if @user.games.empty?
-      redirect_to user_path(@user)
+      redirect_to new_game_path
     end
     @games = @user.games
   end

@@ -17,6 +17,7 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find_by_id(params[:id])
+    binding.pry
     if !@event.group.users.include?(current_user)
       redirect_to group_path(@event.group)
     end

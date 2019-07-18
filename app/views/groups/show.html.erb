@@ -12,16 +12,16 @@
     <% end %>
     <%= link_to "Add Event", new_group_event_path(@group) %>
     <div>
-        <%= button_to "Edit Group", edit_group_path(@group) %>
+        <%= button_to "Edit Group", edit_group_path(@group), method: "get" %>
     </div>
      <div>
-        <%= button_to "Leave Group",  group_leave_path (@group) %>
+        <%= button_to "Leave Group",  group_leave_path(@group), method: "get" %>
     </div>
     <div>
         <%= button_to "Delete Group", group_path(@group), method: "delete" %>
     </div>
 <% else %>
     <div>
-        <%= button_to "Join Group", group_join_path(@group) %>
+        <%= button_to "Join Group", group_join_path(@group), method: "get" %>
     </div>
 <% end %>
