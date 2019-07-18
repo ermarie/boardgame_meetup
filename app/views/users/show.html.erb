@@ -26,6 +26,7 @@
 <% end %>
 </br>
 <h4>Games:</h4>
+<%= render 'games/toggle_form'%>
 <% if !@user.games.empty? %>
     <% @user.games.each do |game| %>
         <div><%= link_to game.name, game_path(game) %></div>
