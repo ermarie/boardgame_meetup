@@ -28,6 +28,13 @@ class EventsController < ApplicationController
     redirect_to group_event_path(@event)
   end
 
+  def leave
+    event = Event.find_by_id(params[:id])
+    group = event.group
+    current_user.events.delete(event)
+    redirect_to group_path(group)
+  end
+
   def edit
     @event = Event.find_by_id(params[:id])
   end
