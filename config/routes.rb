@@ -11,15 +11,19 @@ Rails.application.routes.draw do
 
   root to: "application#home"
 
-  resources :users, only: [:show]
+  resources :users, only: [:show] do
+    get :one_day
+    get :seven_days
+    get :thirty_days
+  end
   #resources :groups, only: [:show]
 
   resources :groups do 
-    get "join"
-    get "leave"
+    get :join
+    get :leave
     resources :events, only: [:new, :create, :show, :edit, :update, :destroy] do
-      get "join"
-      get "leave"
+      get :join
+      get :leave
     end
   end
   

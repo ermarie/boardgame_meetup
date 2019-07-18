@@ -12,7 +12,6 @@
     <div><%= button_to "See All Groups", groups_path, method: "get" %></div>
     </br>
     <h4>Your Events are:</h4>
-    <%= render 'events/range_form' %>
     <% if !@user.events.empty? %>
         <% @user.groups.each do |group| %>
             <% group.events.each do |event| %>
@@ -26,7 +25,6 @@
 <% end %>
 </br>
 <h4>Games:</h4>
-<%= render 'games/toggle_form'%>
 <% if !@user.games.empty? %>
     <% @user.games.each do |game| %>
         <div><%= link_to game.name, game_path(game) %></div>
