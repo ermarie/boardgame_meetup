@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get 'mechanisms/show'
   get 'categories/show'
   devise_for :users, :controllers => { :registrations => "registrations", :omniauth_callbacks => "callbacks" }
   
