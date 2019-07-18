@@ -1,2 +1,4 @@
-<h1>Mechanisms#show</h1>
-<p>Find me in app/views/mechanisms/show.html.erb</p>
+<%= @mechanism.name %>
+<% @mechanism.games.each do |game| %>
+    <div><%= link_to game.name, game_path(game) %></div>
+<% end %>
