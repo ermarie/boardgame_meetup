@@ -1,5 +1,5 @@
 class GamesController < ApplicationController
-  
+
   def new
     @game = Game.new
   end
@@ -11,7 +11,10 @@ class GamesController < ApplicationController
   end
 
   def index
-    @user = User.find_by(name: session[:name])
+    @user = current_user
+    if @user.games.empty?
+      redirect_to user_path(@user)
+    end
     @games = @user.games
   end
 

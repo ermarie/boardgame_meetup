@@ -8,19 +8,14 @@
             <%= link_to group.name, group_path(group) %></br>
         <% end %>
     <% end %>
-    <div>
-        <%= button_to "Create a New Group", new_group_path %>
-    </div>
-    <div>
-        <%= button_to "See All Groups", groups_path %>
-    </div>
+    <div><%= button_to "Create a New Group", new_group_path %></div>
+    <div><%= button_to "See All Groups", groups_path %></div>
     </br>
     <h4>Your Events are:</h4>
     <% if !@user.events.empty? %>
         <% @user.groups.each do |group| %>
             <% group.events.each do |event| %>
-                <%= link_to event.name, group_event_path(event) %>
-                </br>
+                <div><%= link_to event.name, group_event_path(event) %></div>
             <% end %>
         <% end %>
     <% end %>
@@ -29,8 +24,8 @@
 <h4>Games:</h4>
 <% if !@user.games.empty? %>
     <% @user.games.each do |game| %>
-        <%= link_to game.name, game_path(game) %>
+        <div><%= link_to game.name, game_path(game) %></div>
     <% end %>
 <% elsif @user == current_user %>
-    <%= button_to "Add a New Game", new_game_path %>
+    <div><%= button_to "Add a New Game", new_game_path %></div>
 <% end %>
