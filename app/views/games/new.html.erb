@@ -1,16 +1,30 @@
 <h1>New Game Page</h1>
 
 
-<%= form_for @event do |f| %>
+<%= form_for @game do |f| %>
     <%= f.label :name %>
     <%= f.text_field :name %>
-    <%= f.label :month %>
-    <%= select_month(Date.today) %>
-    <%= f.label :day %>
-    <%= select_day(Date.today) %>
-    <%= f.label :month %>
-    <%= select_year(Date.today) %>
-    <%= f.date_field %>
-
-    <%= f.submit "Create Event" %>
+    <%= f.label :min_play_time %>
+    <%= f.text_field :min_play_time %>
+    <%= f.label :max_play_time %>
+    <%= f.text_field :max_play_time %>
+    <%= f.label :min_num_players %>
+    <%= f.text_field :min_num_players %>
+    <%= f.label :max_num_players %>
+    <%= f.text_field :max_num_players %>
+    <%= f.label :min_age %>
+    <%= f.text_field :min_age %>
+    <%= f.label :max_age %>
+    <%= f.text_field :max_age %>
+    <%= f.label :categories %>
+    <%= f.collection_check_box(:category_ids, Category.all, :id, :name) %>
+    <%= f.fields_for :categories, @game.categories.build do |categories_fields| %>
+        <%= categories_fields.text_field :name %>
+    <% end %>
+    <%= f.label :mechanisms %>
+    <%= f.collection_check_box(:mechanism_ids, Mechanism.all, :id, :name) %>
+    <%= f.fields_for :categories, @game.mehanisms.build do |mechanisms_fields| %>
+        <%= mechanisms_fields.text_field :name %>
+    <% end %>
+    <%= f.submit "Create Game" %>
 <% end %>

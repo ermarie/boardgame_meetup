@@ -23,6 +23,12 @@ class GamesController < ApplicationController
   end
 
   def update
+    @game = Game.find_by(id: params[:id])
+    if @game.update(game_params)
+      redirect_to game_path(@game)
+    else
+      redirect_to edit_game_path(@game)
+    end
   end
 
   def destroy
@@ -30,7 +36,7 @@ class GamesController < ApplicationController
 
   private
 
-  def event_params
+  def game_params
     params.require(:game).permit(:name, :min_play_time, :max_play_time, :min_num_players, :max_num_players, :min_age, :max_age)
   end
 end

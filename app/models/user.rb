@@ -18,8 +18,8 @@ class User < ApplicationRecord
 
   private
 
-  def to_param
-    name
-  end
+  # def to_param
+  #   name
+  # end
 
 end
