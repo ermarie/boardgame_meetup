@@ -23,7 +23,7 @@
     <% end %>
     <%= f.label :mechanisms %>
     <%= f.collection_check_boxes(:mechanism_ids, Mechanism.all, :id, :name) %>
-    <%= f.fields_for :categories, @game.mehanisms.build do |mechanisms_fields| %>
+    <%= f.fields_for :mechanisms, @game.mechanisms.build do |mechanisms_fields| %>
         <%= mechanisms_fields.text_field :name %>
     <% end %>
     <%= f.submit "Create Game" %>

@@ -5,6 +5,7 @@ class GamesController < ApplicationController
   end
 
   def create
+    binding.pry
     @game = Game.create(game_params)
     current_user.games << @game
     redirect_to game_path(@game)
@@ -43,6 +44,8 @@ class GamesController < ApplicationController
   private
 
   def game_params
-    params.require(:game).permit(:name, :min_play_time, :max_play_time, :min_num_players, :max_num_players, :min_age, :max_age)
+    params.require(:game).permit(:name, :min_play_time, :max_play_time, :min_num_players, :max_num_players, :min_age, :max_age,
+      categories_attributes: [:category_ids, :name],
+      mechanisms_attributes: [:mechanisms_ids, :name])
   end
 end
