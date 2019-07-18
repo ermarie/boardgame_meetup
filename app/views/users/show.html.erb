@@ -8,8 +8,8 @@
             <%= link_to group.name, group_path(group) %></br>
         <% end %>
     <% end %>
-    <div><%= button_to "Create a New Group", new_group_path %></div>
-    <div><%= button_to "See All Groups", groups_path %></div>
+    <div><%= button_to "Create a New Group", new_group_path, method: "get" %></div>
+    <div><%= button_to "See All Groups", groups_path, method: "get" %></div>
     </br>
     <h4>Your Events are:</h4>
     <%= render 'events/range_form' %>
@@ -31,5 +31,5 @@
         <div><%= link_to game.name, game_path(game) %></div>
     <% end %>
 <% elsif @user == current_user %>
-    <div><%= button_to "Add a New Game", new_game_path %></div>
+    <div><%= button_to "Add a New Game", new_game_path, method: "get" %></div>
 <% end %>

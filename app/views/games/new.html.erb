@@ -17,12 +17,12 @@
     <%= f.label :max_age %>
     <%= f.text_field :max_age %>
     <%= f.label :categories %>
-    <%= f.collection_check_box(:category_ids, Category.all, :id, :name) %>
+    <%= f.collection_check_boxes(:category_ids, Category.all, :id, :name) %>
     <%= f.fields_for :categories, @game.categories.build do |categories_fields| %>
         <%= categories_fields.text_field :name %>
     <% end %>
     <%= f.label :mechanisms %>
-    <%= f.collection_check_box(:mechanism_ids, Mechanism.all, :id, :name) %>
+    <%= f.collection_check_boxes(:mechanism_ids, Mechanism.all, :id, :name) %>
     <%= f.fields_for :categories, @game.mehanisms.build do |mechanisms_fields| %>
         <%= mechanisms_fields.text_field :name %>
     <% end %>
