@@ -12,10 +12,14 @@
     <div><%= button_to "See All Groups", groups_path %></div>
     </br>
     <h4>Your Events are:</h4>
+    <%= render 'events/range_form' %>
     <% if !@user.events.empty? %>
         <% @user.groups.each do |group| %>
             <% group.events.each do |event| %>
-                <div><%= link_to event.name, group_event_path(event) %></div>
+                <div>
+                    <%= link_to event.name, group_event_path(event) %></br>
+                    <%= event.date_time.to_formatted_s(:long_ordinal) %></br>
+                </div>
             <% end %>
         <% end %>
     <% end %>

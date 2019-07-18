@@ -2,11 +2,13 @@
 
 <% if current_user.groups.include?(@group) %>
     <h2>Events:</h2>
-    <%= @group.events.each do |event| %>
-        <%= link_to event.name, group_event_path(event) %></ br>
-        <%= event.date_time %></ br>
-        <%= event.location %></ br>
-        </ br>
+    <%= render 'events/range_form' %>
+    <% @group.events.each do |event| %>
+        <div>
+            <%= link_to event.name, group_event_path(event) %></br>
+            <%= event.date_time.to_formatted_s(:long_ordinal) %></br>
+            </br>
+        </div>
     <% end %>
     <%= link_to "Add Event", new_group_event_path(@group) %>
     <div>

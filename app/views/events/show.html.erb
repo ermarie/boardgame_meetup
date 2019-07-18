@@ -1,15 +1,19 @@
 <h1><%= @event.name %></h1>
 
     <%= event.name %></ br>
-    <%= event.date_time %></ br>
+    <%= event.date_time.to_formatted_s(:long_ordinal) %></ br>
     </ br>
     <% if current_user.events.include?(@event) %>
     <div>
         <%= button_to "Edit Event", edit_group_event_path(@event) %>
     </div>
     <div>
+        <%= button_to "Leave Event" %>
+    </div>
+    <div>
         <%= button_to "Delete Event", group_event_path(@event), method: "delete" %>
     </div>
+    <h3>Attending:</h3>
     <% @event.users.each do |user| %>
         <%= link_to user.name, user_path(user) %></ br>
     <% end %>
