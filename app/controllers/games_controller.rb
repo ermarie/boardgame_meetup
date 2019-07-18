@@ -4,6 +4,7 @@ class GamesController < ApplicationController
   end
 
   def create
+    @game = Game.create(game_params)
   end
 
   def index
@@ -28,6 +29,6 @@ class GamesController < ApplicationController
   private
 
   def event_params
-    params.permit(:event).
+    params.require(:game).permit(:name, :min_play_time, :max_play_time, :min_num_players, :max_num_players, :min_age, :max_age)
   end
 end
