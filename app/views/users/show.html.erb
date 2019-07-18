@@ -1,4 +1,3 @@
-<h1>User Show Page</h1>
 
 <h1><%= @user.name %></h1>
 
@@ -6,7 +5,7 @@
     <% if !@user.groups.empty? %>
         <h3>Your Groups are:</h3>
         <% @user.groups.each do |group| %>
-            <%= link_to group.name, group_path(group) %></ br>
+            <%= link_to group.name, group_path(group) %></br>
         <% end %>
     <% end %>
     <div>
@@ -19,8 +18,10 @@
     <% if !@user.events.empty? %>
         <h4>Your Events are:</h4>
         <% @user.groups.each do |group| %>
-            <%= group.events.each do |event| %>
+            <% group.events.each do |event| %>
+            <%binding.pry%>
                 <%= link_to event.name, group_event_path(event) %>
+                </br>
             <% end %>
         <% end %>
     <% end %>

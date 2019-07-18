@@ -11,7 +11,7 @@
         <%= button_to "Delete Event", group_event_path(@event), method: "delete" %>
     </div>
     <% @event.users.each do |user| %>
-        <%= link_to user.name, user_path(user) %>
+        <%= link_to user.name, user_path(user) %></ br>
     <% end %>
 <% else %>
     <div>
