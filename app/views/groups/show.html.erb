@@ -3,7 +3,7 @@
 <% if current_user.groups.include?(@group) %>
     <h2>Events:</h2>
     <%= @group.events.each do |event| %>
-        <%= event.name %></ br>
+        <%= link_to event.name, group_event_path(event) %></ br>
         <%= event.date_time %></ br>
         <%= event.location %></ br>
         </ br>
@@ -17,6 +17,6 @@
     </div>
 <% else %>
     <div>
-        <%= button_to "Join Group", group_path(@group) %>
+        <%= button_to "Join Group", group_join_path(@group) %>
     </div>
 <% end %>

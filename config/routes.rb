@@ -11,9 +11,13 @@ Rails.application.routes.draw do
   #resources :groups, only: [:show]
 
   resources :groups do 
-    resources :events, only: [:new, :create, :show, :edit, :update, :delete]
+    get "join"
+    resources :events, only: [:new, :create, :show, :edit, :update, :destroy] do
+      get "join"
+    end
   end
-    
+  
+  resources :events
   #resources :events, :games, :categories, :mechanisms
 
   root to: "application#home"

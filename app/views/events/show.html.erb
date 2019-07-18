@@ -1,2 +1,20 @@
-<h1>Events#show</h1>
-<p>Find me in app/views/events/show.html.erb</p>
+<h1><%= @event.name %></h1>
+
+    <%= event.name %></ br>
+    <%= event.date_time %></ br>
+    </ br>
+    <% if current_user.events.include?(@event) %>
+    <div>
+        <%= button_to "Edit Event", edit_group_event_path(@event) %>
+    </div>
+    <div>
+        <%= button_to "Delete Event", group_event_path(@event), method: "delete" %>
+    </div>
+    <% @event.users.each do |user| %>
+        <%= link_to user.name, user_path(user) %>
+    <% end %>
+<% else %>
+    <div>
+        <%= button_to "Join Event", group_event_join_path(@event) %>
+    </div>
+<% end %>
