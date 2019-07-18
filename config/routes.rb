@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     end
   end
   
-  resources :events
+  resources :games
   #resources :events, :games, :categories, :mechanisms
 
   root to: "application#home"
