@@ -1,6 +1,6 @@
-class GameUsersController < ApplicationController
+class PlayController < ApplicationController
   def show
-    
+
   end
 
   def edit
