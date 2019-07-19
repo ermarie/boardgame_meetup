@@ -44,7 +44,6 @@ class GamesController < ApplicationController
 
   def game_params
     params.require(:game).permit(:name, :min_play_time, :max_play_time, :min_num_players, :max_num_players, :min_age, :max_age,
-      categories_attributes: [:category_ids, :name],
-      mechanisms_attributes: [:mechanism_ids, :name])
+      categories_attributes: [:name, category_ids: []]
   end
 end

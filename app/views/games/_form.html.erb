@@ -18,11 +18,5 @@
     <%= f.fields_for :categories, @game.categories.build do |categories_fields| %>
         <%= categories_fields.text_field :name, placeholder: "add new category" %>
     <% end %></br>
-    <%= f.label :mechanisms %>
-    <%= f.collection_check_boxes(:mechanism_ids, Mechanism.all, :id, :name) %></br>
-    <%= f.fields_for :mechanisms, @game.mechanisms.build do |mechanisms_fields| %>
-        <%= mechanisms_fields.text_field :name, placeholder: "add new mechanism" %>
-    <% end %></br>
-    </br>
     <%= f.submit %>
 <% end %>
