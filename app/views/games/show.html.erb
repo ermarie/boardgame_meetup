@@ -15,7 +15,7 @@
 <% end %>
 
 <% if current_user.games.include?(@game)%>
-    <div><%= button_to "Add Game Plays", edit_game_users_path(@game), method: "get" %></div>
+    <div><%= button_to "See or Add Game Plays", edit_game_users_path(@game), method: "get" %></div>
     <div><%= button_to "Edit Game", edit_game_path(@game), method: "get" %></div>
     <div><%= button_to "Delete Game", game_path(@game), method: "delete" %></div>
 <% end %>

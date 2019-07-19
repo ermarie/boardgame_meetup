@@ -1,5 +1,6 @@
 class GameUsersController < ApplicationController
   def show
+    
   end
 
   def edit
