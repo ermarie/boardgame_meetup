@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  get 'game_users/show'
+  get 'game_users/edit'
+  get 'game_users/update'
   get 'mechanisms/show'
   get 'categories/show'
   devise_for :users, :controllers => { :registrations => "registrations", :omniauth_callbacks => "callbacks" }
