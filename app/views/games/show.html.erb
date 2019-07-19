@@ -21,4 +21,6 @@
 
 
     <div><%= button_to "Edit Game", edit_game_path(@game), method: "get" %></div>
+    <div><%= button_to "Delete Game", game_path(@game), method: "delete" %></div>
+    </br>
     <div><%= button_to "See All Games", games_path, method: "get" %></div>
