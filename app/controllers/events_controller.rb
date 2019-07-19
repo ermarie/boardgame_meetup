@@ -17,7 +17,6 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find_by_id(params[:id])
-    binding.pry
     if !@event.group.users.include?(current_user)
       redirect_to group_path(@event.group)
     end
@@ -37,13 +36,14 @@ class EventsController < ApplicationController
   end
 
   def edit
+    @group = Group.find_by_id(params[:group_id])
     @event = Event.find_by_id(params[:id])
   end
 
   def update
     @event = Event.find_by_id(params[:id])
     @event.update(event_params)
-    redirect_to event_path(@event)
+    redirect_to group_event_path(@event)
   end
 
   def delete

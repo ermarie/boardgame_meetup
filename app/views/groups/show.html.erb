@@ -2,7 +2,6 @@
 
 <% if current_user.groups.include?(@group) %>
     <h2>Events:</h2>
-    <%= render 'events/range_form' %>
     <% @group.events.each do |event| %>
         <div>
             <%= link_to event.name, group_event_path(event) %></br>
