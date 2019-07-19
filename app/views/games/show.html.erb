@@ -14,7 +14,11 @@
     <%= link_to category.name, category_path(category) %>
 <% end %>
 
+<h3>Mechanisms:</h3>
+<% @game.mechanisms.each do |mechanism| %>
+    <%= link_to mechanism.name, mechanism_path(mechanism) %>
+<% end %>
 
 
-    <div><%= button_to "Add a New Game", new_game_path, method: "get" %></div>
+    <div><%= button_to "Edit Game", edit_game_path(@game), method: "get" %></div>
     <div><%= button_to "See All Games", games_path, method: "get" %></div>
