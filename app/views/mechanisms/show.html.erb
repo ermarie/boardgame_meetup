@@ -1,4 +1,4 @@
-<%= @mechanism.name %>
+<h1><%= @mechanism.name %></h1>
 <% @mechanism.games.each do |game| %>
     <div><%= link_to game.name, game_path(game) %></div>
 <% end %>
