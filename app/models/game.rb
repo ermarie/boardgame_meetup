@@ -4,6 +4,5 @@ class Game < ApplicationRecord
     accepts_nested_attributes_for :categories
 
     validates :categories, presence: true
-    validates :mechanisms, presence: true
 
 end
