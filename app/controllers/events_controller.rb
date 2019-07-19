@@ -41,6 +41,7 @@ class EventsController < ApplicationController
   end
 
   def update
+    binding.pry
     @event = Event.find_by_id(params[:id])
     @event.update(event_params)
     redirect_to group_event_path(@event)
