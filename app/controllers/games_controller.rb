@@ -16,14 +16,17 @@ class GamesController < ApplicationController
   end
 
   def show
+    binding.pry
     @game = Game.find_by(id: params[:id])
   end
 
   def edit
+    binding.pry
     @game = Game.find_by(id: params[:id])
   end
 
   def update
+    binding.pry
     @game = Game.find_by(id: params[:id])
     if @game.update(game_params)
       redirect_to game_path(@game)
@@ -42,6 +45,6 @@ class GamesController < ApplicationController
   def game_params
     params.require(:game).permit(:name, :min_play_time, :max_play_time, :min_num_players, :max_num_players, :min_age, :max_age,
       categories_attributes: [:category_ids, :name],
-      mechanisms_attributes: [:mechanisms_ids, :name])
+      mechanisms_attributes: [:mechanism_ids, :name])
   end
 end
