@@ -1,0 +1,5 @@
+<h1>All Mechanisms</h1>
+</br>
+<% @mechanisms.each do |mechanism| %>
+    <div><%= link_to mechanism.name, mechanism_path(mechanism) %></div>
+<% end %>

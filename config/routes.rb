@@ -11,12 +11,7 @@ Rails.application.routes.draw do
 
   root to: "application#home"
 
-  resources :users, only: [:show] do
-    get :one_day
-    get :seven_days
-    get :thirty_days
-  end
-  #resources :groups, only: [:show]
+  resources :users, only: [:show] 
 
   resources :groups do 
     get :join
@@ -28,8 +23,7 @@ Rails.application.routes.draw do
   end
   
   resources :games
-  #resources :categories, :mechanisms, only: [:index, :show]
-
+  resources :categories, :mechanisms, only: [:show, :index]
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

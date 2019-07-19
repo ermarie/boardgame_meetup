@@ -12,11 +12,7 @@ class GamesController < ApplicationController
   end
 
   def index
-    @user = current_user
-    if @user.games.empty?
-      redirect_to new_game_path
-    end
-    @games = @user.games
+    @games = Game.all
   end
 
   def show
