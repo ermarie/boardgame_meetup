@@ -1,0 +1,2 @@
+class CategoryGame < ApplicationRecord
+end
