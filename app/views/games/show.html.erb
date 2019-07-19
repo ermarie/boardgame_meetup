@@ -1,2 +1,20 @@
-<h1>Games#show</h1>
-<p>Find me in app/views/games/show.html.erb</p>
+<h1><%= @game.name %></h1>
+<% if @game.min_play_time || @game.max_play_time %>
+    <h3>Play Time: <%= @game.min_play_time %> - <%= @game.max_play_time %> minutes</h4>
+<% end %>
+<% if @game.min_num_players || @game.max_num_players %>
+<h3>Num of Players: <%= @game.min_num_players %> - <%= @game.max_num_players %></h4>
+<% end %>
+<% if @game.min_age || @game.max_age %>
+<h3>Age Range: <%= @game.min_age %> - <%= @game.max_age %></h4>
+<% end %>
+
+<h3>Categories:</h3>
+<% @game.categories.each do |category| %>
+    <%= link_to category.name, category_path(category) %>
+<% end %>
+
+
+
+    <div><%= button_to "Add a New Game", new_game_path, method: "get" %></div>
+    <div><%= button_to "See All Games", games_path, method: "get" %></div>
