@@ -1,6 +1,6 @@
 class Category < ApplicationRecord
-    has_many :category_games
-    has_many :games, through: :category_games
+    has_many :categories_game
+    has_many :games, through: :categories_game
 
-    validates :name, presence: true
+    validates :name, presence: true 
 end

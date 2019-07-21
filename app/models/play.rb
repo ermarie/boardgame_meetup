@@ -2,6 +2,8 @@ class Play < ApplicationRecord
   belongs_to :game
   belongs_to :user
 
-  scope :ties, -> {where("winner = ?", "tie")}
+  validates :minutes_played, presence: true
+
+  scope :ties, -> {where("winner = ?", "tie:")}
 
 end

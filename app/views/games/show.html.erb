@@ -15,8 +15,15 @@
 <% end %>
 
 <% if current_user.games.include?(@game)%>
-    <div><%= button_to "See Your Game Plays", plays_path, method: "get" %></div>
-    <div><%= button_to "Add a Game Play", new_play_path(@game), method: "get" %></div>
+    <h3>Game Plays:</h3>
+    <% @game.plays.each do |play| %>
+        <%= link_to play.winner, game_play_path(play) %>
+    <% end %>
+    </br>
+    </br>
+    <div><%= button_to "Add a Game Play", new_game_play_path(@game), method: "get" %></div>
+    <div><%= button_to "See Tied Game Plays", game_ties_path(@game), method: "get" %></div>
+    </br>
     <div><%= button_to "Edit Game", edit_game_path(@game), method: "get" %></div>
     <div><%= button_to "Delete Game", game_path(@game), method: "delete" %></div>
 <% end %>

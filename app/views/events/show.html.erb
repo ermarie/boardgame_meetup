@@ -8,6 +8,8 @@
         <%= button_to "Leave Event",  group_event_leave_path(@event.group, @event), method: "get" %>
         <%= button_to "Delete Event", group_event_path(@event), method: "delete" %>
     </div>
+    </br>
+    <div><%= button_to @event.group.name, group_path(@event.group), method: "get" %>
     <h3>Attending:</h3>
     <% @event.users.each do |user| %>
         <%= link_to user.name, user_path(user) %></ br>

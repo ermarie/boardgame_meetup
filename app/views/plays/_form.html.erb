@@ -1,0 +1,7 @@
+<%= form_for @play do |f| %>
+    <%= f.label :minutes_played %>
+    <%= f.text_field :minutes_played %>
+    <%= f.label :winner %>
+    <%= f.text_field :winner, placeholder: "Enter 'tie:' first if a tie" %>
+    <%= f.submit %>
+<% end %>

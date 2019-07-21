@@ -2,6 +2,7 @@ class GamesController < ApplicationController
 
   def new
     @game = Game.new
+    @category = @game.categories_games.build.build_category
   end
 
   def create
@@ -16,8 +17,13 @@ class GamesController < ApplicationController
   end
 
   def show
-    binding.pry
     @game = Game.find_by(id: params[:id])
+  end
+
+  def ties
+    @game = Game.find_by(id: params[:id])
+    @ties = @game.plays.ties
+    redirect_to game_ties_path(@ties)
   end
 
   def edit
@@ -43,7 +49,8 @@ class GamesController < ApplicationController
   private
 
   def game_params
-    params.require(:game).permit(:name, :min_play_time, :max_play_time, :min_num_players, :max_num_players, :min_age, :max_age,
-      categories_attributes: [:name, category_ids: []]
+    params.require(:game).permit(:name, :min_play_time, :max_play_time, :min_num_players, :max_num_players, :min_age, :max_age, category_ids: [],
+      categories_attributes: [:name]
+      )
   end
 end

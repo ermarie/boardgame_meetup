@@ -9,7 +9,7 @@
             </br>
         </div>
     <% end %>
-    <%= link_to "Add Event", new_group_event_path(@group) %>
+    <%= button_to "Add Event", new_group_event_path(@group), method: "get" %>
     <div>
         <%= button_to "Edit Group", edit_group_path(@group), method: "get" %>
     </div>

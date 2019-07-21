@@ -1,2 +1,0 @@
-class CategoryGame < ApplicationRecord
-end

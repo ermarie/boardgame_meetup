@@ -25,8 +25,10 @@ Rails.application.routes.draw do
     end
   end
   
-  resources :games
-  resources :plays
+  resources :games do
+    get :ties
+    resources :plays 
+  end
   resources :categories, :mechanisms, only: [:show, :index]
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

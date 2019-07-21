@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_19_175626) do
+ActiveRecord::Schema.define(version: 2019_07_19_194612) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -23,30 +23,12 @@ ActiveRecord::Schema.define(version: 2019_07_19_175626) do
     t.integer "game_id", null: false
   end
 
-  create_table "category_games", force: :cascade do |t|
-    t.integer "category_id"
-    t.integer "game_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["category_id"], name: "index_category_games_on_category_id"
-    t.index ["game_id"], name: "index_category_games_on_game_id"
-  end
-
   create_table "events", force: :cascade do |t|
     t.string "name"
     t.datetime "date_time"
     t.integer "group_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "game_users", force: :cascade do |t|
-    t.integer "game_id"
-    t.integer "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["game_id"], name: "index_game_users_on_game_id"
-    t.index ["user_id"], name: "index_game_users_on_user_id"
   end
 
   create_table "games", force: :cascade do |t|
@@ -61,20 +43,6 @@ ActiveRecord::Schema.define(version: 2019_07_19_175626) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "games_users", id: false, force: :cascade do |t|
-    t.integer "game_id", null: false
-    t.integer "user_id", null: false
-  end
-
-  create_table "group_users", force: :cascade do |t|
-    t.integer "group_id"
-    t.integer "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["group_id"], name: "index_group_users_on_group_id"
-    t.index ["user_id"], name: "index_group_users_on_user_id"
-  end
-
   create_table "groups", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -82,8 +50,21 @@ ActiveRecord::Schema.define(version: 2019_07_19_175626) do
   end
 
   create_table "groups_users", id: false, force: :cascade do |t|
-    t.integer "group_id", null: false
-    t.integer "user_id", null: false
+    t.integer "group_id"
+    t.integer "user_id"
+    t.index ["group_id"], name: "index_groups_users_on_group_id"
+    t.index ["user_id"], name: "index_groups_users_on_user_id"
+  end
+
+  create_table "plays", force: :cascade do |t|
+    t.integer "game_id"
+    t.integer "user_id"
+    t.integer "minutes_played"
+    t.string "winner"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["game_id"], name: "index_plays_on_game_id"
+    t.index ["user_id"], name: "index_plays_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
