@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_22_171342) do
+ActiveRecord::Schema.define(version: 2019_07_22_193503) do
 
   create_table "events", force: :cascade do |t|
     t.string "name"
@@ -18,6 +18,11 @@ ActiveRecord::Schema.define(version: 2019_07_22_171342) do
     t.integer "group_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "events_users", id: false, force: :cascade do |t|
+    t.integer "event_id", null: false
+    t.integer "user_id", null: false
   end
 
   create_table "games", force: :cascade do |t|
@@ -28,12 +33,6 @@ ActiveRecord::Schema.define(version: 2019_07_22_171342) do
     t.integer "max_num_players"
     t.integer "min_age"
     t.integer "max_age"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "groups", force: :cascade do |t|
-    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

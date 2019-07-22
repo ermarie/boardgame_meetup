@@ -1,51 +1,48 @@
 class EventsController < ApplicationController
   def new
-    @group = Group.find_by_id(params[:group_id])
-    @event = @group.events.build
+    @event = Event.new
   end
 
   def create
-    @group = Group.find_by_id(params[:group_id])
-    @event = @group.events.build(event_params)
+    @event = Event.new(event_params)
     @event.save
     if @event.valid?
-      redirect_to group_event_path(@event.group, @event)
+      current_user.events << @event
+      redirect_to event_path(@event)
     else
-      redirect_to new_group_event_path
+      redirect_to new_event_path
     end
   end
 
   def show
     @event = Event.find_by_id(params[:id])
-    if !@event.group.users.include?(current_user)
-      redirect_to group_path(@event.group)
+    if @event.users.include?(current_user)
+      @attending = true
+    else
+      @attending = false
     end
   end
 
   def join
     @event = Event.find_by_id(params[:id])
     current_user.events << @event
-    redirect_to group_event_path(@event)
+    redirect_to event_path(@event)
   end
 
   def leave
-    binding.pry
-    event = Event.find_by_id(params[:event_id])
-    group = Event.find_by_id(params[:group_id])
-    current_user.groups.find_by_id(params[:group_id]).events.delete(event)
-    redirect_to group_path(group)
+    event = Event.find_by_id(params[:id])
+    current_user.events.find_by_id(params[:id]).elete(event)
+    redirect_to user_path(current_user)
   end
 
   def edit
-    @group = Group.find_by_id(params[:group_id])
     @event = Event.find_by_id(params[:id])
   end
 
   def update
-    binding.pry
     @event = Event.find_by_id(params[:id])
     @event.update(event_params)
-    redirect_to group_event_path(@event)
+    redirect_to event_path(@event)
   end
 
   def delete
