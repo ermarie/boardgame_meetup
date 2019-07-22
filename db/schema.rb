@@ -12,17 +12,6 @@
 
 ActiveRecord::Schema.define(version: 2019_07_19_194612) do
 
-  create_table "categories", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "categories_games", id: false, force: :cascade do |t|
-    t.integer "category_id", null: false
-    t.integer "game_id", null: false
-  end
-
   create_table "events", force: :cascade do |t|
     t.string "name"
     t.datetime "date_time"

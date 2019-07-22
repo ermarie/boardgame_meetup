@@ -1,5 +1,6 @@
 class PlaysController < ApplicationController
   def new
+    binding.pry
     @play = Play.new(game_id: params["game_id"])
     binding.pry
   end

@@ -29,9 +29,10 @@ class EventsController < ApplicationController
   end
 
   def leave
-    event = Event.find_by_id(params[:id])
-    group = event.group
-    current_user.events.delete(event)
+    binding.pry
+    event = Event.find_by_id(params[:event_id])
+    group = Event.find_by_id(params[:group_id])
+    current_user.groups.find_by_id(params[:group_id]).events.delete(event)
     redirect_to group_path(group)
   end
 
