@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
   devise_for :users, :controllers => { :registrations => "registrations", :omniauth_callbacks => "callbacks" }
   
   devise_scope :user do
@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   
   resources :games do
     get :ties
+    get :kid_friendly
     resources :plays 
   end
 

@@ -2,13 +2,12 @@
 
 
 <h2>All Groups:</h2>
-<%= @groups.each do |g| %>
+<% @groups.each do |g| %>
 <div>
     <%= link_to g.name, group_path(g) %>
-</div>?
-?
-?<% end %>
-
+</div>
+<% end %>
+</br>
 <div>
-    <%= link_to "Create a New Group", new_group_path %>
+    <%= button_to "Create a New Group", new_group_path, method: "get" %>
 </div>

@@ -12,7 +12,13 @@
     <div><%= button_to @event.group.name, group_path(@event.group), method: "get" %>
     <h3>Attending:</h3>
     <% @event.users.each do |user| %>
-        <%= link_to user.name, user_path(user) %></ br>
+        <div><%= link_to user.name, user_path(user) %></div>
+    <% end %>
+    <h3>Available Games:</h3>
+    <% @event.users.each do |user| %>
+        <% user.games.each do |game| %>
+            <div><%= link_to game.name, game_path(game) %></div>
+        <% end %>
     <% end %>
 <% else %>
     <div>

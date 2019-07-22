@@ -1,3 +1,15 @@
+<% if @game.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@game.errors.count, "error") %> prohibited this game from being saved:</h2>
+ 
+    <ul>
+    <% @game.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <%= form_for @game do |f| %>
     <%= f.label :name %>
     <%= f.text_field :name %></br>
@@ -13,10 +25,5 @@
     <%= f.text_field :min_age %>
     <%= f.label :max_age %>
     <%= f.text_field :max_age, placeholder: "enter '100' if no max"%></br>
-    <%= f.label :categories %>
-    <%= f.collection_check_boxes(:category_ids, Category.all, :id, :name) %></br>
-    <%= f.fields_for :categories, @category do |categories_fields| %>
-        <%= categories_fields.text_field :name, placeholder: "add new category" %>
-    <% end %></br>
     <%= f.submit %>
 <% end %>

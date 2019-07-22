@@ -34,13 +34,6 @@ group2.events << event4 << event5 << event6
 event7 = Event.create(name: "G3 Event 1", date_time: DateTime.new(2019,12,12,17,00,00,"-06:00"))
 group3.events << event7
 
-user1.events << event1 << event2 << event4 << event7
-user2.events << event2 << event3 << event4 << event5
-user3.events << event2 << event3 << event5 << event7
-user4.events << event1 << event2 << event3
-user5.events << event4 << event6 << event7
-user6.events << event2 << event7
-
 game1 = Game.create(name: "Settlers of Catan", min_play_time: 60, max_play_time: 60, min_num_players: 2, max_num_players: 4, min_age:10, max_age: 10)
 game1.users << user1 << user2 << user3 << user4
 Play.create(minutes_played: 60, winner: "Me", user_id: 1, game_id: 1)

@@ -26,6 +26,10 @@ class GamesController < ApplicationController
     redirect_to game_ties_path(@ties)
   end
 
+  def kid_friendly
+    @kid_friendly = Games.all.kid_friendly
+  end
+
   def edit
     binding.pry
     @game = Game.find_by(id: params[:id])

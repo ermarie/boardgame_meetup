@@ -4,9 +4,13 @@ class GroupsController < ApplicationController
   end
 
   def create
-    group = Group.create(group_params)
-    current_user.groups << group
-    redirect_to group_path(group)
+    @group = Group.new(group_params)
+    if @group.save
+      current_user.groups << @group
+      redirect_to group_path(@group)
+    else
+      render :new
+    end
   end
 
   def index
@@ -19,13 +23,14 @@ class GroupsController < ApplicationController
   end
 
   def join
-    @group = Group.find_by_id(params[:id])
+    binding.pry
+    @group = Group.find_by_id(params[:group_id])
     current_user.groups << @group
     redirect_to group_path(@group)
   end
 
   def leave
-    @group = Group.find_by_id(params[:id])
+    @group = Group.find_by_id(params[:group_id])
     current_user.groups.delete(@group)
     redirect_to groups_path
   end
