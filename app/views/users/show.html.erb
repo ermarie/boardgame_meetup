@@ -2,24 +2,21 @@
 <h1><%= @user.name %></h1>
 </br>
 <% if @user == current_user %>
-    <h3>Your Groups are:</h3>
-    <% if !@user.groups.empty? %>
-        <% @user.groups.each do |group| %>
-            <%= link_to group.name, group_path(group) %></br>
-        <% end %>
+    <h3>Your Group:</h3>
+    <% if @group != nil %>
+        <%= link_to @group.name, group_path(@group) %></br>
+    <% else %>
+        <div><%= button_to "Create a New Group", new_group_path, method: "get" %></div>
+        <div><%= button_to "See All Groups", groups_path, method: "get" %></div>
     <% end %>
-    <div><%= button_to "Create a New Group", new_group_path, method: "get" %></div>
-    <div><%= button_to "See All Groups", groups_path, method: "get" %></div>
     </br>
     <h4>Your Events are:</h4>
-    <% if !@user.events.empty? %>
-        <% @user.groups.each do |group| %>
-            <% group.events.each do |event| %>
-                <div>
-                    <%= link_to event.name, group_event_path(event) %></br>
-                    <%= event.date_time.to_formatted_s(:long_ordinal) %></br>
-                </div>
-            <% end %>
+    <% if !@events.empty? %>
+        <% @events.each do |event| %>
+            <div>
+                <%= link_to event.name, group_event_path(event) %></br>
+                <%= event.date_time.to_formatted_s(:long_ordinal) %></br>
+            </div>
         <% end %>
     <% end %>
 <% end %>

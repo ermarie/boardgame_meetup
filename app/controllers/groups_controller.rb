@@ -24,8 +24,8 @@ class GroupsController < ApplicationController
   end
 
   def join
-    binding.pry
     @group = Group.find_by_id(params[:group_id])
+    binding.pry
     current_user.groups << @group
     redirect_to group_path(@group)
   end

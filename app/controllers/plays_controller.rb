@@ -20,13 +20,13 @@ class PlaysController < ApplicationController
 
   def edit
     @play = Play.find_by(id: params[:id])
-    binding.pry
   end
 
   def update
     @play = Play.new(play_params)
+    game = Game.find(@play.game_id)
     if @play.save
-      redirect_to game_play_path(@play)
+      redirect_to game_path(game)
     else
       render :edit
     end

@@ -1,6 +1,6 @@
 <h1><%= @group.name %></h1>
 
-<% if current_user.groups.include?(@group) %>
+<% if current_user.group != nil %>
     <h2>Events:</h2>
     <% @group.events.each do |event| %>
         <div>

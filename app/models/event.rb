@@ -1,6 +1,5 @@
 class Event < ApplicationRecord
-    belongs_to :group
-    has_many :users, through: :group
+    has_and_belongs_to_many :users
 
     validates :name, presence: true, uniqueness: true, length: {minimum: 3}
 

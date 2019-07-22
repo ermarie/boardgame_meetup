@@ -11,13 +11,9 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show] 
 
-  resources :groups do 
-    get :join
-    get :leave
-    resources :events, only: [:new, :create, :show, :edit, :update, :destroy] do
+  resources :events, only: [:new, :create, :show, :edit, :update, :destroy] do
       get :join
       get :leave
-    end
   end
   
   resources :games do

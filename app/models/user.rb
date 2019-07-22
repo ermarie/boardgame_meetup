@@ -1,8 +1,7 @@
 class User < ApplicationRecord
   has_many :plays
   has_many :games, through: :plays
-  has_and_belongs_to_many :groups
-  has_many :events, through: :groups
+  has_and_belongs_to_many :events
 
   devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :validatable, :omniauthable
