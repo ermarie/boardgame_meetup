@@ -1,7 +1,0 @@
-<h1>Kid Friendly Games</h1>
-
-<% @kid_friendly.each do |game| %>
-        <div><%= link_to game.name, game_path(game) %></div>
-    <% end %>
-
-<div><%= button_to "See All Games", games_path, method: "get" %></div>

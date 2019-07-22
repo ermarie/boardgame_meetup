@@ -1,6 +1,0 @@
-<h1>Tied Game Plays:</h1>
-<h2><%= link_to @game.name, game_path(@game) %></h2>
-    <% @ties.each do |tie| %>
-        <%= link_to tie.winner, play_path(tie) %>
-    <% end %>
-    <div><%= button_to "Add a Game Play", new_play_path(@game), method: "get" %></div>

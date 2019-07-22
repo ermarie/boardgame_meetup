@@ -9,13 +9,16 @@
 <h3>Age Range: <%= @game.min_age %> - <%= @game.max_age %></h4>
 <% end %>
 
-<h3>Categories:</h3>
-<% @game.categories.each do |category| %>
-    <%= link_to category.name, category_path(category) %>
-<% end %>
-
 <% if current_user.games.include?(@game)%>
     <h3>Game Plays:</h3>
+
+    <% if @ties == true %>
+        <h2>Tied Plays</h2>
+        <div><%= button_to "See All Plays", game_path(@game), method: "get" %></div>
+    <% else %>
+        <div><%= button_to "See All Tied Plays", game_ties_path, method: "get" %></div>
+    <% end %>
+    
     <% @game.plays.each do |play| %>
         <%= link_to play.winner, game_play_path(play) %>
     <% end %>

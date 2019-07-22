@@ -16,6 +16,7 @@ class GroupsController < ApplicationController
   def index
     @groups = Group.all
     @user = current_user
+    @kf == false
   end
 
   def show

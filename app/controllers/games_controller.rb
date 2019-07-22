@@ -2,11 +2,9 @@ class GamesController < ApplicationController
 
   def new
     @game = Game.new
-    @category = @game.categories_games.build.build_category
   end
 
   def create
-    binding.pry
     @game = Game.create(game_params)
     current_user.games << @game
     redirect_to game_path(@game)
@@ -14,20 +12,27 @@ class GamesController < ApplicationController
 
   def index
     @games = Game.all
+    if @games.empty?
+      redirect_to new_game_path
+    end
   end
 
   def show
     @game = Game.find_by(id: params[:id])
+    @ties == false
   end
 
   def ties
     @game = Game.find_by(id: params[:id])
-    @ties = @game.plays.ties
-    redirect_to game_ties_path(@ties)
+    @plays = @game.plays.ties
+    @ties = true
+    render :show
   end
 
   def kid_friendly
-    @kid_friendly = Games.all.kid_friendly
+    @games = Games.all.kid_friendly
+    @kf = true
+    render :index
   end
 
   def edit
