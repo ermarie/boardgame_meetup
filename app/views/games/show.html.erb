@@ -16,16 +16,15 @@
         <h2>Tied Plays</h2>
         <div><%= button_to "See All Plays", game_path(@game), method: "get" %></div>
     <% else %>
-        <div><%= button_to "See All Tied Plays", game_ties_path, method: "get" %></div>
+        <div><%= button_to "See All Tied Plays", game_ties_path(@game), method: "get" %></div>
     <% end %>
-    
+
     <% @game.plays.each do |play| %>
-        <%= link_to play.winner, game_play_path(play) %>
+        <div><%= link_to play.winner, game_play_path(play) %></div>
     <% end %>
     </br>
     </br>
     <div><%= button_to "Add a Game Play", new_game_play_path(@game), method: "get" %></div>
-    <div><%= button_to "See Tied Game Plays", game_ties_path(@game), method: "get" %></div>
     </br>
     <div><%= button_to "Edit Game", edit_game_path(@game), method: "get" %></div>
     <div><%= button_to "Delete Game", game_path(@game), method: "delete" %></div>
