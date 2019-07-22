@@ -24,14 +24,14 @@ class EventsController < ApplicationController
   end
 
   def join
-    @event = Event.find_by_id(params[:id])
+    @event = Event.find_by_id(params[:event_id])
     current_user.events << @event
     redirect_to event_path(@event)
   end
 
   def leave
-    event = Event.find_by_id(params[:id])
-    current_user.events.find_by_id(params[:id]).elete(event)
+    event = Event.find_by_id(params[:event_id])
+    current_user.events.delete(event)
     redirect_to user_path(current_user)
   end
 

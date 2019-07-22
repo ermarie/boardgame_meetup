@@ -18,6 +18,8 @@ Rails.application.routes.draw do
   
   resources :games do
     get :kid_friendly
+    get :add 
+    get :delete
     resources :plays 
   end
 

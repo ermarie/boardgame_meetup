@@ -28,8 +28,19 @@ class GamesController < ApplicationController
     render :index
   end
 
+  def add 
+    @game = Game.find_by(id: params[:game_id])
+    play = Play.create(game_id: @game.id, user_id: current_user.id, winner: "I own this")
+    redirect_to game_path(@game)
+  end
+
+  def delete
+    @game = Game.find_by(id: params[:game_id])
+    current_user.games.delete(@game)
+    redirect_to game_path(@game)
+  end
+
   def edit
-    binding.pry
     @game = Game.find_by(id: params[:id])
   end
 

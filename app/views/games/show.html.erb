@@ -11,16 +11,19 @@
 
 <% if current_user.games.include?(@game)%>
     <h3>Game Plays:</h3>
-        <div><%= button_to "See All Plays", game_path(@game), method: "get" %></div>
     <% @game.plays.each do |play| %>
-        <div><%= link_to play.winner, game_play_path(play) %></div>
+        <% if play.user_id == current_user.id && play.winner != "I own this" %>
+            <div><%= link_to play.winner, game_play_path(play) %></div>
+        <% end %>
     <% end %>
     </br>
     </br>
     <div><%= button_to "Add a Game Play", new_game_play_path(@game), method: "get" %></div>
     </br>
     <div><%= button_to "Edit Game", edit_game_path(@game), method: "get" %></div>
-    <div><%= button_to "Delete Game", game_path(@game), method: "delete" %></div>
+    <div><%= button_to "Remove Game", game_path(@game), method: "delete" %></div>
+<% else %>
+    <div><%= button_to "Add Game", game_add_path(@game), method: "get" %></div>
 <% end %>
 </br>
 <div><%= button_to "See All Games", games_path, method: "get" %></div>
