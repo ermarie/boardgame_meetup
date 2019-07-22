@@ -45,6 +45,10 @@ class EventsController < ApplicationController
     redirect_to event_path(@event)
   end
 
+  def index
+    @events = Event.all
+  end
+
   def delete
     event = Event.find_by_id(params[:id])
     event.destroy
