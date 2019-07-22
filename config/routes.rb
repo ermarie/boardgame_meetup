@@ -17,7 +17,6 @@ Rails.application.routes.draw do
   end
   
   resources :games do
-    get :ties
     get :kid_friendly
     resources :plays 
   end

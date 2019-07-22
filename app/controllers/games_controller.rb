@@ -22,17 +22,6 @@ class GamesController < ApplicationController
     @ties == false
   end
 
-  def ties
-    @game = Game.find_by(id: params[:game_id])
-    @plays = @game.plays.ties
-    if @plays.empty? 
-      redirect_to game_path(@game)
-    else
-      @ties = true
-      render :show
-    end
-  end
-
   def kid_friendly
     @games = Game.all.kid_friendly
     @kf = true

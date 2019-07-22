@@ -11,14 +11,7 @@
 
 <% if current_user.games.include?(@game)%>
     <h3>Game Plays:</h3>
-
-    <% if @ties == true %>
-        <h2>Tied Plays</h2>
         <div><%= button_to "See All Plays", game_path(@game), method: "get" %></div>
-    <% else %>
-        <div><%= button_to "See All Tied Plays", game_ties_path(@game), method: "get" %></div>
-    <% end %>
-
     <% @game.plays.each do |play| %>
         <div><%= link_to play.winner, game_play_path(play) %></div>
     <% end %>

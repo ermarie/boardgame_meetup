@@ -5,6 +5,4 @@ class Play < ApplicationRecord
   validates :minutes_played, presence: true
   validates :winner, presence: true
 
-  scope :ties, -> {where("winner = ?", "tie:")}
-
 end
