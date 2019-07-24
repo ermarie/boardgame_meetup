@@ -29,7 +29,6 @@ class GamesController < ApplicationController
 
   def add 
     @game = Game.find_by(id: params[:game_id])
-    binding.pry
     play = Play.create(game_id: @game.id, user_id: current_user.id, winner: "I own this")
     redirect_to game_path(@game)
   end
