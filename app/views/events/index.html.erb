@@ -2,7 +2,8 @@
 
 <% @events.each do |event| %>
 <div>
-    <%= link_to event.name, event_path(event) %>
+    <%= link_to event.name, event_path(event) %></br>
+    <%= event.date_time.to_formatted_s(:long_ordinal) %>
 </div>
 <% end %>
 </br>

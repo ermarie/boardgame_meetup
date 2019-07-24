@@ -19,7 +19,6 @@ class GamesController < ApplicationController
 
   def show
     @game = Game.find_by(id: params[:id])
-    @ties == false
   end
 
   def kid_friendly
@@ -30,6 +29,7 @@ class GamesController < ApplicationController
 
   def add 
     @game = Game.find_by(id: params[:game_id])
+    binding.pry
     play = Play.create(game_id: @game.id, user_id: current_user.id, winner: "I own this")
     redirect_to game_path(@game)
   end
@@ -62,8 +62,6 @@ class GamesController < ApplicationController
   private
 
   def game_params
-    params.require(:game).permit(:name, :min_play_time, :max_play_time, :min_num_players, :max_num_players, :min_age, :max_age, category_ids: [],
-      categories_attributes: [:name]
-      )
+    params.require(:game).permit(:name, :min_play_time, :max_play_time, :min_num_players, :max_num_players, :min_age, :max_age)
   end
 end
