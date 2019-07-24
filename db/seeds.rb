@@ -13,13 +13,19 @@ user5 = User.create(email: "maria@maria.com", name: "Maria", password: "maria", 
 user6 = User.create(email: "adam@adam.com", name: "Adam", password: "adam", password_confirmation: "adam")
 
 
-event1 = Event.create(name: "G1 Event 1", date_time: DateTime.new(2019,11,19,8,37,48,"-06:00"))
-event2 = Event.create(name: "G1 Event 2", date_time: DateTime.new(2019,10,19,8,37,48,"-06:00"))
-event3 = Event.create(name: "G1 Event 3", date_time: DateTime.new(2019,9,19,8,37,48,"-06:00"))
-event4 = Event.create(name: "G2 Event 1", date_time: DateTime.new(2019,9,5,17,00,00,"-06:00"))
-event5 = Event.create(name: "G2 Event 2", date_time: DateTime.new(2019,9,12,17,00,00,"-06:00"))
-event6 = Event.create(name: "G2 Event 3", date_time: DateTime.new(2019,9,19,17,00,00,"-06:00"))
-event7 = Event.create(name: "G3 Event 1", date_time: DateTime.new(2019,12,12,17,00,00,"-06:00"))
+event1 = Event.create(name: "Event 1", date_time: DateTime.new(2019,11,19,8,37,48,"-06:00"))
+event2 = Event.create(name: "Event 2", date_time: DateTime.new(2019,10,19,8,37,48,"-06:00"))
+event3 = Event.create(name: "Event 3", date_time: DateTime.new(2019,9,19,8,37,48,"-06:00"))
+event4 = Event.create(name: "Event 4", date_time: DateTime.new(2019,9,5,17,00,00,"-06:00"))
+event5 = Event.create(name: "Event 5", date_time: DateTime.new(2019,9,12,17,00,00,"-06:00"))
+event6 = Event.create(name: "Event 6", date_time: DateTime.new(2019,9,19,17,00,00,"-06:00"))
+event7 = Event.create(name: "Event 7", date_time: DateTime.new(2019,12,12,17,00,00,"-06:00"))
+
+event1.users << user1 << user2 << user4 << user5
+event2.users << user2 << user3 << user5 << user6
+event3.users << user1 << user2 << user3 << user4
+event4.users << user3 << user4 << user5 << user6
+event5.users 
 
 game1 = Game.create(name: "Settlers of Catan", min_play_time: 60, max_play_time: 60, min_num_players: 2, max_num_players: 4, min_age:10, max_age: 10)
 Play.create(minutes_played: 60, winner: "Me", user_id: 1, game_id: 1)

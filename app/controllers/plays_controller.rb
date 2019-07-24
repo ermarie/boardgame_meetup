@@ -16,10 +16,12 @@ class PlaysController < ApplicationController
   
   def show
     @play = Play.find_by(id: params[:id])
+    @game = Game.find(params["game_id"])
   end
 
   def edit
     @play = Play.find_by(id: params[:id])
+    @game = Game.find(params["game_id"])
   end
 
   def update
@@ -32,7 +34,7 @@ class PlaysController < ApplicationController
     end
   end
 
-  def delete
+  def destroy
     play = Play.find_by(id: params[:id])
     game = play.game
     play.destroy

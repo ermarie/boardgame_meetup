@@ -49,7 +49,7 @@ class EventsController < ApplicationController
     @events = Event.all
   end
 
-  def delete
+  def destroy
     event = Event.find_by_id(params[:id])
     event.destroy
     redirect_to user_path(current_user)
