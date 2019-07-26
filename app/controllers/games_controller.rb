@@ -5,9 +5,14 @@ class GamesController < ApplicationController
   end
 
   def create
-    @game = Game.create(game_params)
-    current_user.games << @game
-    redirect_to game_path(@game)
+    @game = Game.new(game_params)
+    @game.save
+    if @game.valid?
+      current_user.games << @game
+      redirect_to game_path(@game)
+    else
+      render :new
+    end
   end
 
   def index
@@ -44,12 +49,13 @@ class GamesController < ApplicationController
   end
 
   def update
-    binding.pry
-    @game = Game.find_by(id: params[:id])
-    if @game.update(game_params)
+    @game = Game.new(game_params)
+    @game.save
+    if @game.valid?
+      current_user.games << @game
       redirect_to game_path(@game)
     else
-      redirect_to edit_game_path(@game)
+      render :new
     end
   end
 

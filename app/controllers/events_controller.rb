@@ -10,7 +10,7 @@ class EventsController < ApplicationController
       current_user.events << @event
       redirect_to event_path(@event)
     else
-      redirect_to new_event_path
+      render :new
     end
   end
 
