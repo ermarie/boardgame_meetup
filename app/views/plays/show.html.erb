@@ -1,7 +1,0 @@
-<h1>Game Play</h1>
-
-<p>Winner: <%= @play.winner %></p>
-<p>Minutes Played: <%= @play.minutes_played %></p>
-
-<div><%= button_to "Edit Game Play", edit_game_play_path(@play), method: "get" %></div>
-<div><%= button_to "Delete Game Play", game_play_path(@play), method: "delete" %></div>
