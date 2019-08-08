@@ -42,3 +42,10 @@ game12 = Game.create(name: "Code Names", min_play_time: 15, max_play_time: 15, m
 game13 = Game.create(name: "Patchwork", min_play_time: 15, max_play_time: 30, min_num_players: 2, max_num_players: 2, min_age: 8, max_age: 100)
 game14 = Game.create(name: "Dominion", min_play_time: 30, max_play_time: 30, min_num_players: 2, max_num_players: 4, min_age: 13, max_age: 100)
 game15 = Game.create(name: "Stone Age", min_play_time: 60, max_play_time: 90, min_num_players: 2, max_num_players: 4, min_age: 10, max_age: 100)
+
+user1.games << game1 << game3 << game4 << game7 << game10
+user2.games << game2 << game5 << game8 << game11 << game12
+user3.games << game1 << game6 << game9 << game2 << game13
+user4.games << game3 << game5 << game10 << game15 << game2
+user5.games << game1 << game3 << game5 << game8 << game15
+user6.games << game2 << game4 << game6 << game12 << game14
