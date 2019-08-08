@@ -1,49 +1,14 @@
 class PlaysController < ApplicationController
-  def new
-    @game = Game.find(params["game_id"])
-    @play = @game.plays.build(user_id: current_user.id)
-  end
-  
-  def create
-    @play = Play.new(play_params)
-    game = Game.find(@play.game_id)
-    if @play.save
-      redirect_to game_path(game)
-    else
-      render :new
-    end
-  end
-  
-  def show
-    @play = Play.find_by(id: params[:id])
-    @game = Game.find(params["game_id"])
-  end
-
-  def edit
-    @play = Play.find_by(id: params[:id])
-    @game = Game.find(params["game_id"])
-  end
 
   def update
-    @play = Play.new(play_params)
-    game = Game.find(@play.game_id)
-    if @play.save
-      redirect_to game_path(game)
-    else
-      render :edit
-    end
+    binding.pry
+    play = Play.find(params[:id])
+    @game = Game.find(params[:game_id])
+    num = play.num_plays
+    num = num + 1
+    play.update(num_plays: num)
+    play.save
+    redirect_to game_path(@game)
   end
 
-  def destroy
-    play = Play.find_by(id: params[:id])
-    game = play.game
-    play.destroy
-    redirect_to game_path(game)
-  end
-
-  private
-
-  def play_params
-    params.require(:play).permit(:minutes_played, :winner, :user_id, :game_id)
-  end
 end
