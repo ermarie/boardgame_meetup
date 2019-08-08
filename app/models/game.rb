@@ -6,4 +6,5 @@ class Game < ApplicationRecord
 
     scope :kid_friendly, -> {where("min_age < ?", "10")}
 
+
 end

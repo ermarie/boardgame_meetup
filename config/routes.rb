@@ -11,17 +11,17 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show] 
 
-  resources :events do
-      get :join
-      get :leave
-  end
+  resources :events 
+
+  resources :events_users, only: [:new, :create, :destroy]
   
   resources :games do
     get :kid_friendly
-    get :add 
-    get :delete
+    # get :add 
+    # get :delete
     resources :plays 
   end
+
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
