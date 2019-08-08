@@ -28,14 +28,7 @@ event4.users << user3 << user4 << user5 << user6
 event5.users 
 
 game1 = Game.create(name: "Settlers of Catan", min_play_time: 60, max_play_time: 60, min_num_players: 2, max_num_players: 4, min_age:10, max_age: 10)
-Play.create(minutes_played: 60, winner: "Me", user_id: 1, game_id: 1)
-Play.create(minutes_played: 40, winner: "tie: Me and Nancy", user_id: 1, game_id: 1)
-Play.create(minutes_played: 55, winner: "Joe", user_id: 3, game_id: 1)
-Play.create(minutes_played: 60, winner: "Brian", user_id: 4, game_id: 1)
 game2 = Game.create(name: "Pandemic", min_play_time: 45, max_play_time: 45, min_num_players: 2, max_num_players: 4, min_age: 8, max_age: 10)
-Play.create(minutes_played: 60, winner: "tie: Joe and Brian", user_id: 1, game_id: 2)
-Play.create(minutes_played: 60, winner: "Me", user_id: 4, game_id: 2)
-Play.create(minutes_played: 60, winner: "Brian", user_id: 5, game_id: 2)
 game3 = Game.create(name: "Concordia", min_play_time: 100, max_play_time: 100, min_num_players: 2, max_num_players: 5, min_age: 13, max_age: 100)
 game4 = Game.create(name: "Puerto Rico", min_play_time: 90, max_play_time: 150, min_num_players: 2, max_num_players: 5, min_age:12, max_age: 100)
 game5 = Game.create(name: "Power Grid", min_play_time: 120, max_play_time: 120, min_num_players: 2, max_num_players: 6, min_age:12, max_age: 100)
